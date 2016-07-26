@@ -1,4 +1,6 @@
 include ':app',
-        ':FFmpegAndroid', // form https://github.com/WritingMinds/ffmpeg-android-java
-        ':mp3lame' //from https://github.com/naman14/TAndroidLame
+        ':FFmpegAndroid',
+        ':androidlame'
+        //, // form https://github.com/WritingMinds/ffmpeg-android-java
+        //':mp3lame' //from https://github.com/naman14/TAndroidLame
 

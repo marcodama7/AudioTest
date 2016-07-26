@@ -9,6 +9,8 @@ import android.util.Log;
 import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
+import com.naman14.androidlame.AndroidLame;
+import com.naman14.androidlame.EncodeManager;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //startTest(getApplicationContext());
-        //Mp3LameManager.sInitEncoder();
+        startTest(getApplicationContext());
+        AndroidLame androidLame = new AndroidLame();
+
     }
 
     public static void startTest(Context context) {
@@ -173,23 +176,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     private static final int OUTPUT_STREAM_BUFFER = 8192;
 
-    private static void encodeToMp3(String inputPath, String outputPath) {
-
-
-
+    private static void encodeToMp3(final String inputPath, final String outputPath) {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                EncodeManager.encode(inputPath, outputPath);
+            }
+        });
+        t.start();
     }
 
 
