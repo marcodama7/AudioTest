@@ -13,9 +13,17 @@ public class App  extends Application{
     public static final String TAG = "audiotest";
     public boolean ffmpegSupported = false;
 
+    public static boolean libsLoaded = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        /*
+        if (!libsLoaded) {
+            System.loadLibrary("ARM_ARCH");
+            libsLoaded = false;
+        }
+        */
 
         if (ffmpeg == null) {
             ffmpeg = FFmpeg.getInstance(getApplicationContext());
