@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startTest(getApplicationContext());
+        //startTest(getApplicationContext());
+        //Mp3LameManager.sInitEncoder();
     }
 
     public static void startTest(Context context) {
@@ -115,7 +116,13 @@ public class MainActivity extends AppCompatActivity {
                         public void onFinish() {
                             Log.d(TAG, " ¶¶  - step1_0: onFinish");
                             if (result) {
-
+                                Thread t = new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        encodeToMp3(outputFile, outputFile.replace(".wav", ".mp3"));
+                                    }
+                                });
+                                t.start();
                                 if (onFFMpegListener != null) {
                                     onFFMpegListener.onSuccess(outputFile);
                                 }
@@ -141,14 +148,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    /**
-     * Create an output file from raw resources.
-     *
-     * @param outputFile
-     * @param context
-     * @param inputRawResources
-     * @throws IOException
-     */
     public static void createFile(final String outputFile, final Context context, final int inputRawResources) throws IOException {
 
         final OutputStream outputStream = new FileOutputStream(outputFile);
@@ -172,5 +171,27 @@ public class MainActivity extends AppCompatActivity {
         outputStream.close();
         Log.d(TAG, "¶¶ audio file created ! "+ outputFile);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static final int OUTPUT_STREAM_BUFFER = 8192;
+
+    private static void encodeToMp3(String inputPath, String outputPath) {
+
+
+
+    }
+
+
 
 }

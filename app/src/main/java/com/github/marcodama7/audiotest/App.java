@@ -6,9 +6,9 @@ import android.util.Log;
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
 import com.github.hiteshsondhi88.libffmpeg.LoadBinaryResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException;
-import com.github.marcodama7.lameandroid.LameAndroid;
 
 public class App  extends Application{
+
 
     private static FFmpeg ffmpeg;
     public static final String TAG = "audiotest";
@@ -16,15 +16,10 @@ public class App  extends Application{
 
     public static boolean libsLoaded = false;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
-        /*
-        if (!libsLoaded) {
-            System.loadLibrary("ARM_ARCH");
-            libsLoaded = false;
-        }
-        */
 
         if (ffmpeg == null) {
             //new AndroidLame();
@@ -61,6 +56,9 @@ public class App  extends Application{
             }
         }
 
-        LameAndroid.init();
+
     }
+
+
+
 }
