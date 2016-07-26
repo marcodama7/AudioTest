@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        final String newFile = context.getFilesDir() + "/audio_output_"+(new java.util.Date().getTime())+".mp3";
+        final String newFile = context.getFilesDir() + "/audio_output_"+(new java.util.Date().getTime())+".wav";
         mixAudioTracks(context, audioPaths[0], audioPaths[1], newFile, new OnFFMpegListener() {
             @Override
             public void onSuccess(String fileOutput) {
@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onFinish() {
                             Log.d(TAG, " ¶¶  - step1_0: onFinish");
                             if (result) {
+
                                 if (onFFMpegListener != null) {
                                     onFFMpegListener.onSuccess(outputFile);
                                 }
@@ -137,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         });
         t.start();
     }
+
 
 
     /**

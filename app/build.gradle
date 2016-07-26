@@ -17,6 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        sourceSets.main {
+            assets.srcDirs = ['assets']
+            jni.srcDirs = [] //disable automatic ndk-build
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
@@ -25,4 +32,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile project (':FFmpegAndroid')
     compile project (':lameandroid')
+    //compile project (':tandroidlame')
+    compile files('libs/jl1.0.1.jar')
 }

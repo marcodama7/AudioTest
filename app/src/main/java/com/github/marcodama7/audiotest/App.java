@@ -6,6 +6,7 @@ import android.util.Log;
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
 import com.github.hiteshsondhi88.libffmpeg.LoadBinaryResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException;
+import com.github.marcodama7.lameandroid.LameAndroid;
 
 public class App  extends Application{
 
@@ -26,6 +27,7 @@ public class App  extends Application{
         */
 
         if (ffmpeg == null) {
+            //new AndroidLame();
             ffmpeg = FFmpeg.getInstance(getApplicationContext());
             try {
                 ffmpeg.loadBinary(new LoadBinaryResponseHandler() {
@@ -58,5 +60,7 @@ public class App  extends Application{
                 Log.d(TAG, "¶¶ ffmpeg: FFmpegNotSupportedException :(");
             }
         }
+
+        LameAndroid.init();
     }
 }
