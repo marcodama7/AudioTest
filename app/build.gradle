@@ -6,7 +6,7 @@ model {
         buildToolsVersion "24.0.0"
 
         defaultConfig {
-            applicationId = "com.github.marcodama7.audiotest"
+            applicationId "com.github.marcodama7.audiotest"
             minSdkVersion.apiLevel 19
             targetSdkVersion.apiLevel 24
             versionCode 1
